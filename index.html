@@ -2,773 +2,761 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SK Fitness Puducherry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SK Fitness Puducherry | Transform Your Life</title>
+  <meta name="description" content="Premium fitness center in Puducherry with expert guidance">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: rgba(20, 20, 20, 0.6);
+      --gold: #FFD700;
+      --gold-glow: rgba(255, 215, 0, 0.4);
+      --gold-gradient: linear-gradient(135deg, #FFD700, #FFA500);
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --whatsapp: #25D366;
+      --whatsapp-glow: rgba(37, 211, 102, 0.4);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --shadow-gold: 0 0 20px var(--gold-glow), 0 0 40px var(--gold-glow);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;      overflow-x: hidden;
+      position: relative;
     }
 
-    /* ===== NAV ===== */
+    /* ===== ANIMATED BACKGROUND ===== */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: 
+        radial-gradient(ellipse at 20% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 165, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(37, 211, 102, 0.05) 0%, transparent 60%);
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ===== NAVIGATION ===== */
     nav {
       position: fixed;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(20,20,20,0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid #FFD700;
-      border-radius: 40px;
-      padding: 10px 20px;
+      top: 16px;
+      left: 50%;      transform: translateX(-50%);
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      padding: 12px 24px;
       display: flex;
-      gap: 20px;
+      align-items: center;
+      gap: 8px;
       z-index: 1000;
-      box-shadow: 0 0 15px #FFD700;
+      box-shadow: var(--shadow-gold);
+      max-width: 90vw;
     }
 
-    nav a {
-      color: #fff;
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--gold);
       text-decoration: none;
-      font-weight: bold;
+      white-space: nowrap;
     }
 
-    /* ===== MOBILE MENU ===== */
     .menu-toggle {
       display: none;
-      font-size: 24px;
+      font-size: 22px;
       cursor: pointer;
-      color: #FFD700;
+      color: var(--gold);
+      padding: 8px;
+      border-radius: 50%;
+      transition: var(--transition);
     }
 
+    .menu-toggle:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 4px;
+    }
+
+    .menu-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 10px 16px;
+      border-radius: 25px;      transition: var(--transition);
+      position: relative;
+    }
+
+    .menu-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold-gradient);
+      transition: var(--transition);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .menu-links a:hover::after,
+    .menu-links a.active::after {
+      width: 70%;
+    }
+
+    .menu-links a:hover,
+    .menu-links a.active {
+      color: var(--gold);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 140px 24px 100px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+    .section-content {
+      max-width: 600px;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .section-content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 500px;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      min-width: 220px;
+      justify-content: center;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--gold-gradient);
+      transition: var(--transition);
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .btn:hover::before {
+      width: 100%;
+    }
+
+    .btn:hover {
+      color: #000;
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.whatsapp {      border-color: var(--whatsapp);
+    }
+
+    .btn.whatsapp::before {
+      background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+    }
+
+    .btn.whatsapp:hover {
+      color: #fff;
+      box-shadow: 0 0 20px var(--whatsapp-glow), 0 0 40px var(--whatsapp-glow);
+    }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    /* ===== CARDS (for features/services) ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 20px 16px;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card i {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .feature-card span {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;      color: var(--text-secondary);
+    }
+
+    /* ===== GALLERY PLACEHOLDER ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(37,211,102,0.1));
+      border-radius: 16px;
+      border: 1px solid rgba(255,215,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      border-color: var(--gold);
+      transform: scale(1.03);
+    }
+
+    .gallery-item i {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: var(--text-secondary);    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    /* ===== MOBILE OPTIMIZATION ===== */
     @media (max-width: 768px) {
       nav {
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        border-radius: 20px;
+        width: 92%;
+        padding: 10px 16px;
+        border-radius: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      .menu-links {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-
-      .menu-links.active {
-        display: flex;
+      .logo {
+        order: 1;
+        margin-right: auto;
       }
 
       .menu-toggle {
         display: block;
+        order: 2;
+      }
+      .menu-links {
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 12px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+
+      .menu-links.active {
+        max-height: 300px;
+      }
+
+      .menu-links a {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 16px;
+      }
+
+      section {
+        padding: 120px 20px 80px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 320px;
+        padding: 18px 24px;
+        font-size: 1.05rem;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    section {
-      padding: 120px 20px;
-      min-height: 100vh;
-      text-align: center;
+    @media (max-width: 400px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
     }
 
-    h1, h2 {
-      color: #FFD700;
+    /* ===== UTILITIES ===== */
+    .text-gold {      color: var(--gold);
     }
 
-    /* ===== BUTTON ===== */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      border-radius: 30px;
-      background: transparent;
-      color: #fff;
-      border: 2px solid #FFD700;
-      text-decoration: none;
-      box-shadow: 0 0 10px #FFD700;
-      transition: 0.3s;
-    }
+    .mt-2 { margin-top: 2rem; }
+    .mb-2 { margin-bottom: 2rem; }
 
-    .btn:hover {
-      background: #FFD700;
-      color: #000;
-      box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
-    }
-
-    /* WhatsApp */
-    .whatsapp {
-      border-color: #25D366;
-      box-shadow: 0 0 10px #25D366;
-    }
-
-    .whatsapp:hover {
-      background: #25D366;
-      color: #fff;
-      box-shadow: 0 0 20px #25D366;
-    }
-
-    /* Animations */
-    .hidden {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 0.8s ease;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
+    /* Scroll progress indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--gold-gradient);
+      z-index: 2000;
+      transition: width 0.1s ease;
     }
   </style>
 </head>
 
 <body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Animated Background -->
+<div class="bg-animation"></div>
+<div class="particles" id="particles"></div>
 
 <!-- NAV -->
 <nav>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <a href="#home" class="logo">SK FITNESS</a>
+  <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </div>
   <div class="menu-links" id="menuLinks">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+    <a href="#home" class="nav-link active">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#contact" class="nav-link">Contact</a>
   </div>
 </nav>
 
 <!-- HOME -->
-<section id="home" class="hidden">
-  <h1>SK Fitness Puducherry</h1>
-  <p>Transform your body. Transform your life.</p>
+<section id="home">
+  <div class="section-content">
+    <h1>SK Fitness<br>Puducherry</h1>
+    <p>Transform your body. Transform your life. Premium training with expert guidance.</p>
+    
+    <a class="btn whatsapp" href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Join on WhatsApp    </a>
 
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness"
-     target="_blank">
-     Join on WhatsApp
-  </a>
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-dumbbell"></i>
+        <span>Modern Equipment</span>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-user-friends"></i>
+        <span>Expert Trainers</span>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-heartbeat"></i>
+        <span>Personalized Plans</span>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-spa"></i>
+        <span>Comfortable Space</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="hidden">
-  <h2>About Us</h2>
-  <p>
-    Premium fitness center with expert guidance and modern equipment.
-  </p>
-
-  <p style="color:#ccc;">
-    Founder and Trainer: <strong>J. Sathiskumar MBA., M. LISC.</strong>
-  </p>
-</section>
+<section id="about">
+  <div class="section-content">
+    <h2>About Us</h2>
+    <p>
+      Premium fitness center with expert guidance and modern equipment designed to help you achieve your goals.
+    </p>
+    <p style="color: var(--text-secondary);">
+      Founder & Head Trainer:<br>
+      <strong class="text-gold">J. Sathiskumar MBA., M.L.I.Sc.</strong>
+    </p>
+    
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-certificate"></i>
+        <span>Certified Training</span>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-clock"></i>
+        <span>Flexible Hours</span>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-users"></i>
+        <span>Small Groups</span>
+      </div>
+    </div>
+  </div></section>
 
 <!-- GALLERY -->
-<section id="gallery" class="hidden">
-  <h2>Gallery</h2>
-  <p>Gym visuals coming soon.</p>
+<section id="gallery">
+  <div class="section-content">
+    <h2>Our Gallery</h2>
+    <p>See our state-of-the-art facility and transformation stories.</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div>
+          <i class="fas fa-images"></i>
+          <div>Gym Floor</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div>
+          <i class="fas fa-images"></i>
+          <div>Cardio Zone</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div>
+          <i class="fas fa-images"></i>
+          <div>Training Area</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div>
+          <i class="fas fa-images"></i>
+          <div>Success Stories</div>
+        </div>
+      </div>
+    </div>
+    
+    <p style="font-size: 0.95rem; margin-top: 20px;">
+      <i class="fas fa-camera text-gold"></i> Full gallery coming soon!
+    </p>
+  </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="hidden">
-  <h2>Contact</h2>
-
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness"
-     target="_blank">
-     Chat on WhatsApp
-  </a>
+<section id="contact">
+  <div class="section-content">
+    <h2>Get In Touch</h2>
+    <p>Ready to start your fitness journey? Message us directly on WhatsApp.</p>
+    
+    <a class="btn whatsapp" href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>    
+    <p class="mt-2" style="font-size: 0.95rem;">
+      <i class="fas fa-map-marker-alt text-gold"></i> Puducherry, India
+    </p>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 SK Fitness Puducherry</p>
+  <p>© <span id="year"></span> SK Fitness Puducherry. All rights reserved.</p>
+  
+  <div class="social-links">
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://wa.me/919876543210" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
 </footer>
 
 <script>
-  // Mobile menu toggle
-  function toggleMenu() {
-    document.getElementById("menuLinks").classList.toggle("active");
+  // ===== PARTICLE ANIMATION =====
+  function createParticles() {
+    const container = document.getElementById('particles');
+    const particleCount = window.innerWidth < 768 ? 15 : 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+      container.appendChild(particle);
+    }
   }
 
-  // Scroll animations
-  const elements = document.querySelectorAll('.hidden');
+  // ===== MOBILE MENU TOGGLE =====
+  const menuToggle = document.getElementById('menuToggle');
+  const menuLinks = document.getElementById('menuLinks');
+  
+  menuToggle.addEventListener('click', () => {
+    menuLinks.classList.toggle('active');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
 
-  const observer = new IntersectionObserver(entries => {
+  // Close menu when clicking a link (mobile)
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuLinks.classList.contains('active')) {
+        menuLinks.classList.remove('active');        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      }
+    });
+  });
+
+  // ===== ACTIVE NAV LINK ON SCROLL =====
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').slice(1) === current) {
+        link.classList.add('active');
+      }
+    });
+
+    // Scroll progress bar
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (scrollTop / scrollHeight) * 100;
+    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  });
+
+  // ===== SCROLL ANIMATIONS =====
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, observerOptions);
 
-  elements.forEach(el => observer.observe(el));
-</script>
+  document.querySelectorAll('.section-content').forEach(el => {    observer.observe(el);
+  });
 
-</body>
-</html>    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      position: relative;
+  // ===== DYNAMIC YEAR =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== INITIALIZE =====
+  document.addEventListener('DOMContentLoaded', () => {
+    createParticles();
+    // Trigger animation for first section immediately
+    document.querySelector('#home .section-content').classList.add('show');
+  });
+
+  // ===== TOUCH OPTIMIZATION =====
+  // Prevent zoom on double tap for buttons
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
     }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 2px;
-      background: red;
-      transition: 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    section {
-      padding: 120px 20px;
-      min-height: 100vh;
-      text-align: center;
-    }
-
-    h1, h2 {
-      color: red;
-    }
-
-    /* Neon Button */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      border-radius: 30px;
-      background: transparent;
-      color: #fff;
-      border: 2px solid red;
-      text-decoration: none;
-      box-shadow: 0 0 10px red;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: red;
-      box-shadow: 0 0 20px red, 0 0 40px red;
-    }
-
-    /* WhatsApp */
-    .whatsapp {
-      border-color: #25D366;
-      box-shadow: 0 0 10px #25D366;
-    }
-
-    .whatsapp:hover {
-      background: #25D366;
-      box-shadow: 0 0 20px #25D366;
-    }
-
-    /* Animations */
-    .hidden {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 0.8s ease;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Founder Section */
-    .founder {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #aaa;
-    }
-
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- NAVIGATION -->
-<nav>
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- HOME -->
-<section id="home" class="hidden">
-  <h1>SK Fitness Puducherry</h1>
-  <p>Transform your body. Transform your life.</p>
-
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness"
-     target="_blank">
-     Join on WhatsApp
-  </a>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="hidden">
-  <h2>About Us</h2>
-  <p>
-    SK Fitness is a premium gym with advanced equipment,
-    expert guidance, and a strong training environment.
-  </p>
-
-  <div class="founder">
-    Founder and Trainer: <strong>J. Sathiskumar MBA., M. LISC.</strong>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="hidden">
-  <h2>Gallery</h2>
-  <p>Gym visuals coming soon.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="hidden">
-  <h2>Contact Us</h2>
-
-  <p>Reach us instantly on WhatsApp.</p>
-
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness"
-     target="_blank">
-     Chat Now
-  </a>
-</section>
-
-<footer>
-  <p>© 2026 SK Fitness Puducherry</p>
-</footer>
-
-<script>
-  const elements = document.querySelectorAll('.hidden');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  elements.forEach(el => observer.observe(el));
+    lastTouchEnd = now;
+  }, false);
 </script>
 
 </body>
 </html>
-    section {
-      padding: 100px 20px;
-      min-height: 100vh;
-    }
-
-    h1, h2 {
-      color: red;
-    }
-
-    .btn {
-      display: inline-block;
-      background: red;
-      padding: 12px 20px;
-      color: #fff;
-      text-decoration: none;
-      margin-top: 15px;
-      border-radius: 5px;
-    }
-
-    /* WhatsApp Button */
-    .whatsapp {
-      background: #25D366;
-      border-radius: 30px;
-      padding: 14px 24px;
-      font-weight: bold;
-    }
-
-    /* Scroll Animation */
-    .hidden {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div><strong>SK Fitness</strong></div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HOME -->
-<section id="home" class="hidden">
-  <h1>SK Fitness Puducherry</h1>
-  <p>Transform your body, transform your life.</p>
-
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness"
-     target="_blank">
-     Join on WhatsApp
-  </a>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="hidden">
-  <h2>About Us</h2>
-  <p>
-    SK Fitness is a premium gym offering modern equipment,
-    expert trainers, and a powerful environment to achieve your goals.
-  </p>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="hidden">
-  <h2>Gallery</h2>
-  <p>Coming soon: Gym images, transformations, and more.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="hidden">
-  <h2>Contact Us</h2>
-  <p>Call or WhatsApp for membership details.</p>
-
-  <a class="btn whatsapp"
-     href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness"
-     target="_blank">
-     Chat on WhatsApp
-  </a>
-</section>
-
-<footer>
-  <p>© 2026 SK Fitness Puducherry</p>
-</footer>
-
-<!-- Scroll Animation Script -->
-<script>
-  const elements = document.querySelectorAll('.hidden');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
-
-  elements.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>  margin-left: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: gold;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-              url('your-hero-image.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.hero p {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-/* SECTIONS */
-section {
-  padding: 80px 20px;
-}
-
-.light {
-  background: #fff;
-  color: #000;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* HEADINGS */
-h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* CARD STYLE */
-.card {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  background: #222;
-}
-
-/* LIGHT CARD */
-.light .card {
-  background: #f5f5f5;
-}
-
-.light .card:hover {
-  background: #eaeaea;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-}
-
-/* GALLERY */
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* BUTTONS */
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 10px;
-  background: gold;
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #ffd700;
-}
-
-/* FLOAT BUTTONS */
-.float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-.float a {
-  display: block;
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 50%;
-  color: #fff;
-  text-align: center;
-}
-
-.call { background: green; }
-.whatsapp { background: #25D366; }
-
-/* ANIMATION */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #000;
-  color: #aaa;
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav>
-  <div><b>SK FITNESS</b></div>
-  <div>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#rules">Rules</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="home" class="hero">
-  <div>
-    <h1>Train Hard. Stay Disciplined.</h1>
-    <p>Build strength. Build discipline. Build your future.</p>
-    <a href="#contact" class="btn">Join Now</a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="light fade">
-  <div class="container">
-    <h2>About Us</h2>
-    <div class="card">
-      <p>
-        SK Fitness is a professional training center in Puducherry focused on strength,
-        discipline, and transformation.
-      </p>
-    </div>
-
-    <div class="card">
-      <p>
-        Trainer: <b>J. Sathiskumar</b> provides structured guidance, proper form,
-        and disciplined training methods.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- RULES -->
-<section id="rules" class="fade">
-  <div class="container">
-    <h2>Gym Rules</h2>
-
-    <div class="grid">
-      <div class="card">Respect equipment</div>
-      <div class="card">Rack weights properly</div>
-      <div class="card">No slamming weights</div>
-      <div class="card">Maintain hygiene</div>
-      <div class="card">Respect others</div>
-      <div class="card">Use towel</div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="light fade">
-  <div class="container">
-    <h2>Gallery</h2>
-
-    <div class="grid gallery">
-      <img src="gym1.jpg">
-      <img src="gym2.jpg">
-      <img src="gym3.jpg">
-      <img src="gym4.jpg">
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="fade">
-  <div class="container">
-    <h2>Contact Us</h2>
-
-    <div class="card">
-      <p>
-        📍 No.1,2,3,4 Thendral St, Mudaliarpet, Puducherry – 605004
-      </p>
-      <p>📞 6381629103</p>
-
-      <a href="tel:6381629103" class="btn">Call Now</a>
-      <a href="https://wa.me/916381629103" class="btn">WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<!-- FLOAT BUTTONS -->
-<div class="float">
-  <a href="tel:6381629103" class="call">📞</a>
-  <a href="https://wa.me/916381629103" class="whatsapp">💬</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 SK Fitness | Built with discipline 💪
-</footer>
-
-<!-- SCRIPT -->
-<script>
-const faders = document.querySelectorAll('.fade');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-});
-
-faders.forEach(el => observer.observe(el));
-</script>
-
-</body>
-  </html>
