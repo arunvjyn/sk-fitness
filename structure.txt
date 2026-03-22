@@ -1,0 +1,37 @@
+sk-fitness-website/
+│
+├──  index.html                 (Homepage - Main page)
+├── 📄 training.html              (Training Programs page)
+├──  about.html                 (About Us page)
+├──  gallery.html               (Gallery page)
+├── 📄 contact.html               (Contact page)
+│
+├── 📁 assets/
+│   │
+│   ├── 📁 images/
+│   │   ├── logo.png              (Your SK Fitness logo - main logo)
+│   │   ├── logo-favicon.ico      (Favicon version of logo)
+│   │   ├── hero-bg.jpg           (Hero section background - gym interior)
+│   │   │
+│   │   ├── 📁 gallery/           (For Gallery page)
+│   │   │   ├── gym-floor-1.jpg
+│   │   │   ├── gym-floor-2.jpg
+│   │   │   ├── cardio-zone-1.jpg
+│   │   │   ├── equipment-1.jpg
+│   │   │   ├── equipment-2.jpg
+│   │   │   ├── training-area-1.jpg
+│   │   │   └── (add more as needed)
+│   │   │
+│   │   └── 📁 transformations/   (For future before/after photos)
+│   │       ├── before-1.jpg
+│   │       ├── after-1.jpg
+│   │       └── (add later)
+│   │
+│   └── 📁 icons/                 (Optional - if you want custom icons)
+│       └── (we're using Font Awesome CDN, so this is optional)
+│
+├── 📁 css/                       (Optional - for future custom styles)
+│   └── style.css
+│
+└── 📁 js/                        (Optional - for future custom scripts)
+    └── main.js
