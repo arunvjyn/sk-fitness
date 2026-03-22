@@ -17,24 +17,203 @@
       color: #fff;
     }
 
-    /* ===== Neon Navigation ===== */
+    /* ===== NAV ===== */
     nav {
       position: fixed;
       top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(20,20,20,0.6);
+      background: rgba(20,20,20,0.7);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,0,0,0.4);
+      border: 1px solid #FFD700;
       border-radius: 40px;
       padding: 10px 20px;
       display: flex;
       gap: 20px;
       z-index: 1000;
-      box-shadow: 0 0 15px red;
+      box-shadow: 0 0 15px #FFD700;
     }
 
     nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #FFD700;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        border-radius: 20px;
+      }
+
+      .menu-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .menu-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    section {
+      padding: 120px 20px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #FFD700;
+    }
+
+    /* ===== BUTTON ===== */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #FFD700;
+      text-decoration: none;
+      box-shadow: 0 0 10px #FFD700;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #FFD700;
+      color: #000;
+      box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
+    }
+
+    /* WhatsApp */
+    .whatsapp {
+      border-color: #25D366;
+      box-shadow: 0 0 10px #25D366;
+    }
+
+    .whatsapp:hover {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 0 20px #25D366;
+    }
+
+    /* Animations */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="menu-links" id="menuLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hidden">
+  <h1>SK Fitness Puducherry</h1>
+  <p>Transform your body. Transform your life.</p>
+
+  <a class="btn whatsapp"
+     href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness"
+     target="_blank">
+     Join on WhatsApp
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="hidden">
+  <h2>About Us</h2>
+  <p>
+    Premium fitness center with expert guidance and modern equipment.
+  </p>
+
+  <p style="color:#ccc;">
+    Founder and Trainer: <strong>J. Sathiskumar MBA., M. LISC.</strong>
+  </p>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="hidden">
+  <h2>Gallery</h2>
+  <p>Gym visuals coming soon.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="hidden">
+  <h2>Contact</h2>
+
+  <a class="btn whatsapp"
+     href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness"
+     target="_blank">
+     Chat on WhatsApp
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 SK Fitness Puducherry</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    document.getElementById("menuLinks").classList.toggle("active");
+  }
+
+  // Scroll animations
+  const elements = document.querySelectorAll('.hidden');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>    nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
