@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SK Fitness Puducherry</title>
 
-  <!-- Smooth scroll -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -18,23 +17,186 @@
       color: #fff;
     }
 
-    header {
+    /* ===== Neon Navigation ===== */
+    nav {
       position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.9);
-      padding: 15px 20px;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20,20,20,0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,0,0,0.4);
+      border-radius: 40px;
+      padding: 10px 20px;
       display: flex;
-      justify-content: space-between;
+      gap: 20px;
       z-index: 1000;
+      box-shadow: 0 0 15px red;
     }
 
-    header a {
+    nav a {
       color: #fff;
-      margin-left: 15px;
       text-decoration: none;
+      font-weight: bold;
+      position: relative;
     }
 
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: red;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 120px 20px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: red;
+    }
+
+    /* Neon Button */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: transparent;
+      color: #fff;
+      border: 2px solid red;
+      text-decoration: none;
+      box-shadow: 0 0 10px red;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: red;
+      box-shadow: 0 0 20px red, 0 0 40px red;
+    }
+
+    /* WhatsApp */
+    .whatsapp {
+      border-color: #25D366;
+      box-shadow: 0 0 10px #25D366;
+    }
+
+    .whatsapp:hover {
+      background: #25D366;
+      box-shadow: 0 0 20px #25D366;
+    }
+
+    /* Animations */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Founder Section */
+    .founder {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #aaa;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hidden">
+  <h1>SK Fitness Puducherry</h1>
+  <p>Transform your body. Transform your life.</p>
+
+  <a class="btn whatsapp"
+     href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20join%20SK%20Fitness"
+     target="_blank">
+     Join on WhatsApp
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="hidden">
+  <h2>About Us</h2>
+  <p>
+    SK Fitness is a premium gym with advanced equipment,
+    expert guidance, and a strong training environment.
+  </p>
+
+  <div class="founder">
+    Founder and Trainer: <strong>J. Sathiskumar MBA., M. LISC.</strong>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="hidden">
+  <h2>Gallery</h2>
+  <p>Gym visuals coming soon.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="hidden">
+  <h2>Contact Us</h2>
+
+  <p>Reach us instantly on WhatsApp.</p>
+
+  <a class="btn whatsapp"
+     href="https://wa.me/919876543210?text=Hi%20I%20need%20details%20about%20SK%20Fitness"
+     target="_blank">
+     Chat Now
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 SK Fitness Puducherry</p>
+</footer>
+
+<script>
+  const elements = document.querySelectorAll('.hidden');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
     section {
       padding: 100px 20px;
       min-height: 100vh;
