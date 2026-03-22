@@ -12,7 +12,7 @@ This website is designed to:
 - Provide contact details for potential members  
 - Represent the disciplined fitness culture of SK Fitness  
 
-## 🧑‍🏫 Trainer
+## 🧑‍🏫 Founder and Trainer
 
 **J. Sathiskumar MBA., M. LISC**  
 Dedicated fitness trainer focused on discipline, proper form, and consistent progress.
