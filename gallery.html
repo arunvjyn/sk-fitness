@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gallery | SK Fitness Puducherry</title>
+  <meta name="description" content="Take a look inside SK Fitness Puducherry - training environment, equipment, and workout atmosphere.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page Specific Styles -->
+  <style>
+    .gallery-hero {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 30px;
+      padding: 60px 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .gallery-section {
+      margin: 60px 0;
+    }
+
+    .gallery-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .gallery-section > p {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 40px;    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--neon-cyan);
+      transform: translateY(-10px);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    .gallery-placeholder i {
+      font-size: 4rem;
+      color: var(--neon-cyan);      opacity: 0.5;
+      margin-bottom: 15px;
+    }
+
+    .gallery-placeholder span {
+      font-weight: 600;
+      color: var(--neon-cyan);
+      font-size: 1.1rem;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      padding: 20px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .transformation-card {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-pink);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .transformation-card.coming-soon {
+      border-style: dashed;
+      opacity: 0.7;
+    }
+
+    .transformation-card h4 {
+      font-family: 'Orbitron', sans-serif;      font-size: 1.3rem;
+      color: var(--neon-pink);
+      margin-bottom: 20px;
+    }
+
+    .transformation-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .transformation-placeholder {
+      aspect-ratio: 1;
+      background: rgba(255, 0, 255, 0.05);
+      border: 2px dashed var(--neon-pink);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    .transformation-placeholder i {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--neon-pink);
+      opacity: 0.5;
+    }
+
+    .transformation-placeholder span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .gallery-cta {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 2px solid var(--neon-cyan);
+      border-radius: 30px;
+      padding: 60px 40px;
+      margin: 60px auto;
+      max-width: 900px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-cta h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .gallery-cta p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-hero, .gallery-cta {
+        padding: 40px 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .transformation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Background -->
+  <div class="bg-animation"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="SK Fitness" class="logo">
+        <div class="brand-name">SK FITNESS</div>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="training.html">Training</a>
+        <a href="about.html">About</a>        <a href="gallery.html" class="active">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero" id="gallery-header">
+    <div class="hero-content">
+      <h1>Gallery</h1>
+      <p>Take a look inside our training space</p>
+    </div>
+  </section>
+
+  <!-- Gym Interior -->
+  <section id="interior" class="gallery-section">
+    <div class="container">
+      <h3 class="reveal">Training Environment</h3>
+      <p class="reveal">Experience a clean, spacious, and well-equipped gym designed for serious workouts.</p>
+      
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-image"></i>
+            <span>Gym Floor - View 1</span>
+          </div>
+          <div class="gallery-caption">Spacious workout area for comfortable training</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-image"></i>
+            <span>Gym Floor - View 2</span>
+          </div>
+          <div class="gallery-caption">Clean and organized gym environment</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-image"></i>
+            <span>Training Area</span>
+          </div>
+          <div class="gallery-caption">Dedicated space for focused workouts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Section -->
+  <section id="equipment" class="gallery-section">
+    <div class="container">
+      <h3 class="reveal">Equipment & Setup</h3>      <p class="reveal">We provide a wide range of modern machines and free weights for complete training.</p>
+      
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-dumbbell"></i>
+            <span>Strength Equipment</span>
+          </div>
+          <div class="gallery-caption">Complete strength training setup</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-heartbeat"></i>
+            <span>Cardio Zone</span>
+          </div>
+          <div class="gallery-caption">Modern machines for targeted workouts</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-tools"></i>
+            <span>Free Weights</span>
+          </div>
+          <div class="gallery-caption">Complete range of dumbbells and bars</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-cogs"></i>
+            <span>Machines</span>
+          </div>
+          <div class="gallery-caption">Professional grade equipment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workout Atmosphere -->
+  <section id="atmosphere" class="gallery-section">
+    <div class="container">
+      <h3 class="reveal">Training in Action</h3>
+      <p class="reveal">A focused and disciplined environment where members train with consistency.</p>
+      
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-running"></i>
+            <span>Workout Session 1</span>
+          </div>
+          <div class="gallery-caption">Members training with dedication</div>
+        </div>
+        <div class="gallery-item">          <div class="gallery-placeholder">
+            <i class="fas fa-dumbbell"></i>
+            <span>Workout Session 2</span>
+          </div>
+          <div class="gallery-caption">Focused training atmosphere</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <i class="fas fa-fire"></i>
+            <span>Training Time</span>
+          </div>
+          <div class="gallery-caption">Discipline in every rep</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Transformations -->
+  <section id="transformations" class="gallery-section">
+    <div class="container">
+      <h3 class="reveal">Member Transformations</h3>
+      <p class="reveal">Real transformations coming soon.</p>
+      
+      <div class="transformation-grid reveal">
+        <div class="transformation-card coming-soon">
+          <h4><i class="fas fa-clock"></i> Coming Soon</h4>
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">Before & After transformations will be added here</p>
+          <div class="transformation-images">
+            <div class="transformation-placeholder">
+              <i class="fas fa-user"></i>
+              <span>Before</span>
+            </div>
+            <div class="transformation-placeholder">
+              <i class="fas fa-user-check"></i>
+              <span>After</span>
+            </div>
+          </div>
+          <p style="color: var(--neon-yellow); font-size: 0.9rem;">
+            <i class="fas fa-info-circle"></i> Real results from real members
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section id="cta">
+    <div class="container">
+      <div class="gallery-cta reveal">
+        <h3>See the Space. Feel the Energy. Start Your Journey.</h3>        <p>Visit us today and experience the SK Fitness difference.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn-primary">
+            <i class="fas fa-dumbbell"></i> Join Now
+          </a>
+          <a href="https://wa.me/916381629103?text=Hi%20I%20want%20to%20visit%20SK%20Fitness" class="btn btn-secondary" target="_blank" rel="noopener">
+            <i class="fas fa-map-marker-alt"></i> Visit Gym
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="logo" style="margin: 0 auto 20px; width: 80px; height: 80px; font-size: 2rem; display: flex; align-items: center; justify-content: center; background: rgba(0, 255, 255, 0.1); border: 3px solid var(--neon-cyan); border-radius: 50%;">SK</div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/sk_fitness6" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/916381629103" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 SK Fitness Puducherry. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Founder & Head Trainer: Sathis Kumar J (MBA., M.LISC and Certified Personal Trainer)</p>
+    </div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>
