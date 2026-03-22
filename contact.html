@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contact Us | SK Fitness Puducherry</title>
+  <meta name="description" content="Contact SK Fitness Puducherry - Visit us at Mudaliarpet. Call 6381629103 for membership and training programs.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page Specific Styles -->
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 30px;
+      padding: 60px 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .contact-card i {
+      font-size: 3rem;
+      color: var(--neon-cyan);
+      margin-bottom: 20px;
+    }
+
+    .contact-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+    }
+
+    .contact-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .contact-card a {
+      color: var(--neon-yellow);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-card a:hover {
+      color: var(--neon-cyan);
+    }
+
+    .location-card {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-pink);
+      border-radius: 25px;
+      padding: 40px 30px;
+      margin: 50px auto;
+      max-width: 800px;
+      backdrop-filter: blur(10px);
+    }
+
+    .location-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-pink);      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .location-card .address {
+      background: rgba(255, 0, 255, 0.05);
+      border: 1px solid var(--neon-pink);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .location-card .address p {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .location-card .address i {
+      color: var(--neon-yellow);
+      margin-right: 10px;
+    }
+
+    .map-container {
+      background: rgba(0, 255, 255, 0.05);
+      border: 2px dashed var(--neon-cyan);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .map-placeholder {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .map-placeholder i {
+      font-size: 4rem;
+      color: var(--neon-cyan);
+      opacity: 0.5;      margin-bottom: 15px;
+    }
+
+    .map-placeholder span {
+      font-weight: 600;
+      color: var(--neon-cyan);
+      font-size: 1.1rem;
+    }
+
+    .hours-card {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-orange);
+      border-radius: 25px;
+      padding: 40px 30px;
+      margin: 50px auto;
+      max-width: 600px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .hours-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--neon-orange);
+      margin-bottom: 25px;
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .hour-item {
+      background: rgba(255, 102, 0, 0.1);
+      border: 1px solid var(--neon-orange);
+      padding: 15px 25px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .hour-item:hover {
+      background: rgba(255, 102, 0, 0.2);
+      transform: translateX(10px);
+    }
+
+    .hour-item span {
+      color: var(--text-primary);      font-weight: 600;
+    }
+
+    .hour-item i {
+      color: var(--neon-yellow);
+    }
+
+    .enquiry-section {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 30px;
+      padding: 50px 35px;
+      margin: 60px auto;
+      max-width: 700px;
+      backdrop-filter: blur(10px);
+    }
+
+    .enquiry-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .enquiry-section > p {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .enquiry-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      color: var(--neon-cyan);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,    .form-group textarea {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--neon-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .social-connect {
+      background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(255, 102, 0, 0.1));
+      border: 2px solid var(--neon-pink);
+      border-radius: 30px;
+      padding: 50px 35px;
+      margin: 60px auto;
+      max-width: 700px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .social-connect h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--neon-pink);
+      margin-bottom: 15px;
+    }
+
+    .social-connect > p {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid;
+    }
+
+    .social-btn.instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .social-btn.instagram:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(220, 39, 67, 0.5);
+    }
+
+    .social-btn.whatsapp {
+      background: transparent;
+      color: #25D366;
+      border-color: #25D366;
+    }
+
+    .social-btn.whatsapp:hover {
+      background: #25D366;
+      color: #000;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 2px solid var(--neon-cyan);
+      border-radius: 30px;
+      padding: 60px 40px;      margin: 60px auto;
+      max-width: 900px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-cta h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .contact-cta p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero, .contact-cta, .enquiry-section, .social-connect {
+        padding: 40px 20px;
+      }
+
+      .location-card, .hours-card {
+        padding: 30px 20px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hour-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .social-buttons {
+        flex-direction: column;
+      }
+
+      .social-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style></head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Background -->
+  <div class="bg-animation"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="SK Fitness" class="logo">
+        <div class="brand-name">SK FITNESS</div>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="training.html">Training</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero" id="contact-header">
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>Start your fitness journey today</p>
+    </div>
+  </section>
+
+  <!-- Contact Details Grid -->
+  <section id="contact-details">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <!-- Location -->
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Visit Our Gym</h3>
+          <p>We are located in Mudaliarpet, Puducherry. Visit us and experience the training environment.</p>
+          <a href="https://maps.google.com/?q=Mudaliarpet,Puducherry" target="_blank" rel="noopener">
+            <i class="fas fa-directions"></i> Get Directions
+          </a>        </div>
+
+        <!-- Phone -->
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>Call Us</h3>
+          <p>Call us now to enquire about membership and training programs.</p>
+          <a href="tel:6381629103" style="font-size: 1.3rem; color: var(--neon-cyan);">
+            <i class="fas fa-phone-alt"></i> 63816 29103
+          </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="contact-card">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>Message us on WhatsApp for quick responses and queries.</p>
+          <a href="https://wa.me/916381629103" target="_blank" rel="noopener">
+            <i class="fas fa-comment"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Address -->
+  <section id="location">
+    <div class="container">
+      <div class="location-card reveal">
+        <h3><i class="fas fa-location-arrow"></i> Location</h3>
+        <div class="address">
+          <p>
+            <i class="fas fa-building"></i>
+            No. 1, 2, 3, 4, Thendral Street<br>
+            Jayamurthy Raja Nagar<br>
+            Ozhandai Keerapalayam<br>
+            Mudaliarpet, Puducherry – 605004
+          </p>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Google Maps Integration</span>
+          </div>
+          <p style="color: var(--text-secondary);">
+            <i class="fas fa-info-circle"></i> Map will be embedded here
+          </p>
+          <a href="https://maps.google.com/?q=No.1,2,3,4,Thendral+Street,Mudaliarpet,Puducherry"              class="btn btn-primary" 
+             target="_blank" 
+             rel="noopener"
+             style="margin-top: 20px;">
+            <i class="fas fa-map"></i> Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Hours -->
+  <section id="hours">
+    <div class="container">
+      <div class="hours-card reveal">
+        <h3><i class="fas fa-clock"></i> Working Hours</h3>
+        <div class="hours-grid">
+          <div class="hour-item">
+            <span><i class="fas fa-sun"></i> Morning Session</span>
+            <span>5:30 AM – 12:00 PM</span>
+          </div>
+          <div class="hour-item">
+            <span><i class="fas fa-moon"></i> Evening Session</span>
+            <span>4:00 PM – 9:30 PM</span>
+          </div>
+          <div class="hour-item">
+            <span><i class="fas fa-calendar-alt"></i> Days Open</span>
+            <span>Monday - Sunday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Connect with Instagram -->
+  <section id="social">
+    <div class="container">
+      <div class="social-connect reveal">
+        <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+        <p>Follow us on social media for updates, tips, and motivation!</p>
+        <div class="social-buttons">
+          <a href="https://www.instagram.com/sk_fitness6" 
+             class="social-btn instagram" 
+             target="_blank" 
+             rel="noopener">
+            <i class="fab fa-instagram"></i>
+            Follow on Instagram
+          </a>
+          <a href="https://wa.me/916381629103" 
+             class="social-btn whatsapp"              target="_blank" 
+             rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp Us
+          </a>
+        </div>
+        <p style="margin-top: 25px; color: var(--neon-pink); font-weight: 600;">
+          <i class="fab fa-instagram"></i> @sk_fitness6
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enquiry Section (Future Form) -->
+  <section id="enquiry">
+    <div class="container">
+      <div class="enquiry-section reveal">
+        <h3><i class="fas fa-envelope"></i> Send an Enquiry</h3>
+        <p>Have questions? Reach out to us.</p>
+        
+        <form class="enquiry-form" onsubmit="event.preventDefault(); alert('Form submission will be implemented later');">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Contact Number" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message"><i class="fas fa-comment"></i> Message</label>
+            <textarea id="message" name="message" placeholder="Your enquiry or questions..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+        
+        <p style="text-align: center; color: var(--text-secondary); margin-top: 20px; font-size: 0.9rem;">
+          <i class="fas fa-info-circle"></i> Or contact us directly via phone or WhatsApp
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="final-cta">    <div class="container">
+      <div class="contact-cta reveal">
+        <h3>Don't Wait. Start Your Transformation Today.</h3>
+        <p>Join SK Fitness and begin your journey to a stronger, healthier you.</p>
+        <div class="btn-group">
+          <a href="https://wa.me/916381629103?text=Hi%20I%20want%20to%20join%20SK%20Fitness" 
+             class="btn btn-primary" 
+             target="_blank" 
+             rel="noopener">
+            <i class="fas fa-dumbbell"></i> Join Now
+          </a>
+          <a href="tel:6381629103" class="btn btn-secondary">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+        </div>
+        <p style="margin-top: 25px; color: var(--neon-yellow); font-weight: 600;">
+          <i class="fas fa-phone"></i> Phone: 63816 29103
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="logo" style="margin: 0 auto 20px; width: 80px; height: 80px; font-size: 2rem; display: flex; align-items: center; justify-content: center; background: rgba(0, 255, 255, 0.1); border: 3px solid var(--neon-cyan); border-radius: 50%;">SK</div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/sk_fitness6" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/916381629103" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 SK Fitness Puducherry. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.85rem;">Founder & Head Trainer: Sathis Kumar J (MBA., M.LISC and Certified Personal Trainer)</p>
+    </div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>
