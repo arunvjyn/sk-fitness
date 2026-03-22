@@ -14,14 +14,14 @@ This website is designed to:
 
 ## 🧑‍🏫 Trainer
 
-**J. Sathiskumar**  
+**J. Sathiskumar MBA., M. LISC**  
 Dedicated fitness trainer focused on discipline, proper form, and consistent progress.
 
 ## 🌐 Live Preview
 
 Once deployed via GitHub Pages:
 
-👉 https://your-username.github.io/sk-fitness/
+👉 https://arunvjyn.github.io/sk-fitness/
 
 ## 📁 Features
 
