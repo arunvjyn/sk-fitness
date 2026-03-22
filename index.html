@@ -311,15 +311,16 @@
     <div class="footer-content">
       <div class="logo" style="margin: 0 auto 20px; width: 80px; height: 80px; font-size: 2rem; display: flex; align-items: center; justify-content: center; background: rgba(0, 255, 255, 0.1); border: 3px solid var(--neon-cyan); border-radius: 50%;">SK</div>
       <div class="social-links">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/sk_fitness6" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/916381629103" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/916381629103" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
       <p>&copy; 2026 SK Fitness Puducherry. All rights reserved.</p>
       <p style="margin-top: 10px; font-size: 0.85rem;">Founder & Head Trainer: Sathis Kumar J (MBA., M.LISC and Certified Personal Trainer)</p>
     </div>
   </footer>
 
+  <!-- JavaScript for Interactions -->
   <script>
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -340,14 +341,14 @@
         menuToggle.querySelector('i').classList.remove('fa-times');
       });
     });
-
-    // Scroll Progress    window.addEventListener('scroll', () => {
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (scrollTop / scrollHeight) * 100;
       document.getElementById('scrollProgress').style.width = scrolled + '%';
 
-      // Active nav link
+      // Active nav link based on scroll position
       let current = '';
       document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop - 150;
@@ -364,7 +365,7 @@
       });
     });
 
-    // Reveal on Scroll
+    // Reveal on Scroll Animation
     const observerOptions = {
       threshold: 0.2,
       rootMargin: '0px 0px -50px 0px'
@@ -380,7 +381,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Smooth scroll for anchor links
+    // Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -389,9 +390,9 @@
           target.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
-          });
-        }      });
+          });        }
+      });
     });
   </script>
 </body>
-          </html>
+</html>
