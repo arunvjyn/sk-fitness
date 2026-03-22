@@ -19,8 +19,6 @@ Dedicated fitness trainer focused on discipline, proper form, and consistent pro
 
 ## 🌐 Live Preview
 
-Once deployed via GitHub Pages:
-
 👉 https://arunvjyn.github.io/sk-fitness/
 
 ## 📁 Features
